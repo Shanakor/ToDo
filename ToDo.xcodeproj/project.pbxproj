@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		19506D1F2020711B009A43AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19506D1E2020711B009A43AB /* AppDelegate.swift */; };
-		19506D212020711B009A43AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19506D202020711B009A43AB /* ViewController.swift */; };
 		19506D242020711B009A43AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19506D222020711B009A43AB /* Main.storyboard */; };
 		19506D262020711B009A43AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19506D252020711B009A43AB /* Assets.xcassets */; };
 		19506D292020711B009A43AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19506D272020711B009A43AB /* LaunchScreen.storyboard */; };
+		19506D452020A291009A43AB /* ItemListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19506D442020A291009A43AB /* ItemListViewControllerTests.swift */; };
+		19506D472020A33F009A43AB /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19506D462020A33F009A43AB /* ItemListViewController.swift */; };
+		19506D492020A9A1009A43AB /* ItemListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19506D482020A9A1009A43AB /* ItemListDataProvider.swift */; };
 		3C9DE0BEC01C7638F0FD5860 /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DE343875DFE8DA2384E3B /* LocationTests.swift */; };
 		3C9DE200C7583EFD546316CE /* ItemManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DEFBD5FDC4FDF3B48FAA3 /* ItemManagerTests.swift */; };
 		3C9DE7B3E82D6FD93DF32055 /* ToDoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DE47BF399E545423B54E5 /* ToDoItemTests.swift */; };
@@ -33,13 +35,15 @@
 /* Begin PBXFileReference section */
 		19506D1B2020711B009A43AB /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19506D1E2020711B009A43AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		19506D202020711B009A43AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		19506D232020711B009A43AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		19506D252020711B009A43AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19506D282020711B009A43AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19506D2A2020711B009A43AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19506D2F2020711B009A43AB /* ToDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19506D352020711C009A43AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19506D442020A291009A43AB /* ItemListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewControllerTests.swift; sourceTree = "<group>"; };
+		19506D462020A33F009A43AB /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
+		19506D482020A9A1009A43AB /* ItemListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListDataProvider.swift; sourceTree = "<group>"; };
 		3C9DE343875DFE8DA2384E3B /* LocationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
 		3C9DE3537889D0D722D6FFA4 /* ItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
 		3C9DE46B3FB206574263E48E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -88,12 +92,13 @@
 			isa = PBXGroup;
 			children = (
 				19506D1E2020711B009A43AB /* AppDelegate.swift */,
-				19506D202020711B009A43AB /* ViewController.swift */,
 				19506D222020711B009A43AB /* Main.storyboard */,
 				19506D252020711B009A43AB /* Assets.xcassets */,
 				19506D272020711B009A43AB /* LaunchScreen.storyboard */,
 				19506D2A2020711B009A43AB /* Info.plist */,
 				3C9DE8EB516F188167408B65 /* Model */,
+				19506D462020A33F009A43AB /* ItemListViewController.swift */,
+				19506D482020A9A1009A43AB /* ItemListDataProvider.swift */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -103,6 +108,7 @@
 			children = (
 				19506D352020711C009A43AB /* Info.plist */,
 				3C9DE6E7F98E3E9602E74A67 /* Model */,
+				19506D442020A291009A43AB /* ItemListViewControllerTests.swift */,
 			);
 			path = ToDoTests;
 			sourceTree = "<group>";
@@ -231,8 +237,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19506D212020711B009A43AB /* ViewController.swift in Sources */,
 				19506D1F2020711B009A43AB /* AppDelegate.swift in Sources */,
+				19506D492020A9A1009A43AB /* ItemListDataProvider.swift in Sources */,
+				19506D472020A33F009A43AB /* ItemListViewController.swift in Sources */,
 				3C9DEDE3D14FAE90087E4C7A /* ToDoItem.swift in Sources */,
 				3C9DE8EB07823C071E3AEF73 /* Location.swift in Sources */,
 				3C9DEECE6EA87E69E1140B93 /* ItemManager.swift in Sources */,
@@ -246,6 +253,7 @@
 				3C9DE200C7583EFD546316CE /* ItemManagerTests.swift in Sources */,
 				3C9DE0BEC01C7638F0FD5860 /* LocationTests.swift in Sources */,
 				3C9DE7B3E82D6FD93DF32055 /* ToDoItemTests.swift in Sources */,
+				19506D452020A291009A43AB /* ItemListViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
