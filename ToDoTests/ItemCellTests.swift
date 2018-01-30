@@ -45,6 +45,45 @@ class ItemCellTests: XCTestCase {
     func test_HasDateLabel(){
         XCTAssertTrue(cell.dateLabel.isDescendant(of: cell.contentView))
     }
+
+    func test_ConfigCell_SetsTitle(){
+        cell.configCell(with: ToDoItem(title: "foo"))
+
+        XCTAssertEqual(cell.titleLabel.text, "foo")
+    }
+
+    func test_ConfigCell_SetsDate(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let date = dateFormatter.date(from: "29.01.1998")
+        let timeStamp = date?.timeIntervalSince1970
+
+        cell.configCell(with: ToDoItem(title: "", timeStamp: timeStamp))
+
+        XCTAssertEqual(cell.dateLabel.text, "29.01.1998")
+    }
+
+    func test_ConfigCell_SetsLocationLabel(){
+        let item = ToDoItem(title: "", location: Location(name: "Steyr"))
+
+        cell.configCell(with: item)
+
+        XCTAssertEqual(cell.locationLabel.text, item.location!.name)
+    }
+
+    func test_Title_WhenItemIsChecked_IsStrokeThrough(){
+        let item = ToDoItem(title: "foo", itemDescription: nil, timeStamp: 1222223334, location: Location(name: "Steyr"))
+
+        cell.configCell(with: item, checked: true)
+
+        let attributedString = NSAttributedString(string: "foo", attributes: [
+            NSAttributedStringKey.strikethroughStyle: NSUnderlineStyle.styleSingle.rawValue
+        ])
+
+        XCTAssertEqual(cell.titleLabel.attributedText, attributedString)
+        XCTAssertNil(cell.dateLabel.text)
+        XCTAssertNil(cell.locationLabel.text)
+    }
 }
 
 extension ItemCellTests{
