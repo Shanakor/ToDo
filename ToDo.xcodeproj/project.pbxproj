@@ -12,6 +12,7 @@
 		19506D262020711B009A43AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19506D252020711B009A43AB /* Assets.xcassets */; };
 		19506D292020711B009A43AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19506D272020711B009A43AB /* LaunchScreen.storyboard */; };
 		19506D4D2020B3C9009A43AB /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19506D4C2020B3C9009A43AB /* ItemCell.swift */; };
+		19506D4F202100F5009A43AB /* ItemCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19506D4E202100F5009A43AB /* ItemCellTests.swift */; };
 		3C9DE0B5FAA8CFE6D2A703E4 /* ItemListDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DECCA237A9E0D25513530 /* ItemListDataProviderTests.swift */; };
 		3C9DE0BEC01C7638F0FD5860 /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DE343875DFE8DA2384E3B /* LocationTests.swift */; };
 		3C9DE200C7583EFD546316CE /* ItemManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DEFBD5FDC4FDF3B48FAA3 /* ItemManagerTests.swift */; };
@@ -44,6 +45,7 @@
 		19506D2F2020711B009A43AB /* ToDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19506D352020711C009A43AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19506D4C2020B3C9009A43AB /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		19506D4E202100F5009A43AB /* ItemCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellTests.swift; sourceTree = "<group>"; };
 		3C9DE1F28478BB21C1CFE5F8 /* ItemListDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListDataProvider.swift; sourceTree = "<group>"; };
 		3C9DE343875DFE8DA2384E3B /* LocationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
 		3C9DE3537889D0D722D6FFA4 /* ItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				19506D352020711C009A43AB /* Info.plist */,
 				3C9DE6E7F98E3E9602E74A67 /* Model */,
 				3C9DE511A686C5080335C35F /* Controller */,
+				19506D4E202100F5009A43AB /* ItemCellTests.swift */,
 			);
 			path = ToDoTests;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19506D4F202100F5009A43AB /* ItemCellTests.swift in Sources */,
 				3C9DE200C7583EFD546316CE /* ItemManagerTests.swift in Sources */,
 				3C9DE0BEC01C7638F0FD5860 /* LocationTests.swift in Sources */,
 				3C9DE7B3E82D6FD93DF32055 /* ToDoItemTests.swift in Sources */,

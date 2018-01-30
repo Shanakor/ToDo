@@ -10,6 +10,11 @@ import UIKit
 
 class ItemCell: UITableViewCell {
 
+    // MARK: IBOutlets
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
     func configCell(with: ToDoItem) {
 
     }
