@@ -17,6 +17,8 @@ class ItemListDataProvider: NSObject, UITableViewDataSource {
 
     var itemManager: ItemManager?
 
+    // MARK: DataSource
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -44,6 +46,7 @@ class ItemListDataProvider: NSObject, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        print("here")
+        return ItemCell()
     }
 }
