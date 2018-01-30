@@ -70,11 +70,27 @@ class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate
     }
 
     // MARK: Delegate
+
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         guard let section = Section(rawValue: indexPath.section) else{
             fatalError()
         }
 
         return section == .toDo ? "Check" : "Uncheck"
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        guard let section = Section(rawValue: indexPath.section) else{
+            fatalError()
+        }
+
+        switch section{
+            case .toDo:
+                itemManager?.checkItem(at: indexPath.row)
+            case .done:
+                itemManager?.unCheckItem(at: indexPath.row)
+        }
+
+        tableView.reloadData()
     }
 }
