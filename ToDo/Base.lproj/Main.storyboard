@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -91,6 +92,92 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <customObject id="wiQ-5w-KQL" customClass="ItemListDataProvider" customModule="ToDo" customModuleProvider="target"/>
             </objects>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="j8G-lb-HXm">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="cl2-n5-NJW" customClass="DetailViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="svd-bN-R97">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="bm7-E6-Kn4">
+                                <rect key="frame" x="20" y="192" width="335" height="140"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HpD-rT-PT3">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="49.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Ijp-64-TEC" userLabel="Header StackView">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="31.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Test Notiz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcL-Wj-TLn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="250.5" height="31.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="29.01.1998" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BfT-Hb-Ukt">
+                                                        <rect key="frame" x="250.5" y="11" width="84.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1a-f2-JGW">
+                                                <rect key="frame" x="0.0" y="31.5" width="335" height="18"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add lots and lots of inormation." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3HV-6M-dVx">
+                                        <rect key="frame" x="0.0" y="69.5" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwA-PZ-4OW">
+                                        <rect key="frame" x="0.0" y="110" width="335" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Check">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ahX-4a-oM3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="o84-6W-PgO" firstAttribute="trailing" secondItem="bm7-E6-Kn4" secondAttribute="trailing" constant="20" id="GlK-CF-dlh"/>
+                            <constraint firstItem="ahX-4a-oM3" firstAttribute="leading" secondItem="o84-6W-PgO" secondAttribute="leading" id="XA1-Hl-Yhf"/>
+                            <constraint firstItem="ahX-4a-oM3" firstAttribute="height" secondItem="o84-6W-PgO" secondAttribute="height" multiplier="0.25" id="ZZ3-uY-JmD"/>
+                            <constraint firstItem="bm7-E6-Kn4" firstAttribute="top" secondItem="ahX-4a-oM3" secondAttribute="bottom" constant="30" id="ZmW-1O-nNg"/>
+                            <constraint firstItem="ahX-4a-oM3" firstAttribute="top" secondItem="svd-bN-R97" secondAttribute="top" id="ZqN-J9-awr"/>
+                            <constraint firstItem="o84-6W-PgO" firstAttribute="trailing" secondItem="ahX-4a-oM3" secondAttribute="trailing" id="kDW-2S-JX4"/>
+                            <constraint firstItem="bm7-E6-Kn4" firstAttribute="leading" secondItem="o84-6W-PgO" secondAttribute="leading" constant="20" id="nnf-os-Efe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="o84-6W-PgO"/>
+                    </view>
+                    <connections>
+                        <outlet property="checkButton" destination="xwA-PZ-4OW" id="d9b-wO-gsE"/>
+                        <outlet property="dateLabel" destination="BfT-Hb-Ukt" id="Nhi-bK-KgT"/>
+                        <outlet property="descriptionLabel" destination="3HV-6M-dVx" id="aLF-Jb-xPq"/>
+                        <outlet property="locationLabel" destination="U1a-f2-JGW" id="3rB-L9-64N"/>
+                        <outlet property="mapView" destination="ahX-4a-oM3" id="PUN-9x-gam"/>
+                        <outlet property="titleLabel" destination="NcL-Wj-TLn" id="p2O-On-eKt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XjF-uP-3Os" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="842" y="34"/>
         </scene>
     </scenes>
 </document>

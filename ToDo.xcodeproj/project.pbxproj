@@ -13,6 +13,9 @@
 		19506D292020711B009A43AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19506D272020711B009A43AB /* LaunchScreen.storyboard */; };
 		19506D4D2020B3C9009A43AB /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19506D4C2020B3C9009A43AB /* ItemCell.swift */; };
 		19506D4F202100F5009A43AB /* ItemCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19506D4E202100F5009A43AB /* ItemCellTests.swift */; };
+		19506D51202114AA009A43AB /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19506D50202114AA009A43AB /* DetailViewControllerTests.swift */; };
+		19506D532021152A009A43AB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19506D522021152A009A43AB /* DetailViewController.swift */; };
+		19506D562021DC83009A43AB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19506D552021DC83009A43AB /* MapKit.framework */; };
 		3C9DE0B5FAA8CFE6D2A703E4 /* ItemListDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DECCA237A9E0D25513530 /* ItemListDataProviderTests.swift */; };
 		3C9DE0BEC01C7638F0FD5860 /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DE343875DFE8DA2384E3B /* LocationTests.swift */; };
 		3C9DE200C7583EFD546316CE /* ItemManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DEFBD5FDC4FDF3B48FAA3 /* ItemManagerTests.swift */; };
@@ -46,6 +49,9 @@
 		19506D352020711C009A43AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19506D4C2020B3C9009A43AB /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		19506D4E202100F5009A43AB /* ItemCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellTests.swift; sourceTree = "<group>"; };
+		19506D50202114AA009A43AB /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
+		19506D522021152A009A43AB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		19506D552021DC83009A43AB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3C9DE1F28478BB21C1CFE5F8 /* ItemListDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListDataProvider.swift; sourceTree = "<group>"; };
 		3C9DE343875DFE8DA2384E3B /* LocationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
 		3C9DE3537889D0D722D6FFA4 /* ItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
@@ -63,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19506D562021DC83009A43AB /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +89,7 @@
 				19506D1D2020711B009A43AB /* ToDo */,
 				19506D322020711B009A43AB /* ToDoTests */,
 				19506D1C2020711B009A43AB /* Products */,
+				19506D542021DC83009A43AB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,11 +128,20 @@
 			path = ToDoTests;
 			sourceTree = "<group>";
 		};
+		19506D542021DC83009A43AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				19506D552021DC83009A43AB /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3C9DE511A686C5080335C35F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				3C9DEF9AE6BE873FEC69512D /* ItemListViewControllerTests.swift */,
 				3C9DECCA237A9E0D25513530 /* ItemListDataProviderTests.swift */,
+				19506D50202114AA009A43AB /* DetailViewControllerTests.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -154,6 +171,7 @@
 			children = (
 				3C9DE1F28478BB21C1CFE5F8 /* ItemListDataProvider.swift */,
 				3C9DEB7E74E61B769CB7CEA4 /* ItemListViewController.swift */,
+				19506D522021152A009A43AB /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -209,6 +227,11 @@
 					19506D1A2020711B009A43AB = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					19506D2E2020711B009A43AB = {
 						CreatedOnToolsVersion = 9.2;
@@ -269,6 +292,7 @@
 				3C9DEECE6EA87E69E1140B93 /* ItemManager.swift in Sources */,
 				3C9DE46A45F2987155FF68C9 /* ItemListDataProvider.swift in Sources */,
 				3C9DE3D99843AC2FA820C3E9 /* ItemListViewController.swift in Sources */,
+				19506D532021152A009A43AB /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +304,7 @@
 				3C9DE200C7583EFD546316CE /* ItemManagerTests.swift in Sources */,
 				3C9DE0BEC01C7638F0FD5860 /* LocationTests.swift in Sources */,
 				3C9DE7B3E82D6FD93DF32055 /* ToDoItemTests.swift in Sources */,
+				19506D51202114AA009A43AB /* DetailViewControllerTests.swift in Sources */,
 				3C9DECE81B65777B8F0F95E1 /* ItemListViewControllerTests.swift in Sources */,
 				3C9DE0B5FAA8CFE6D2A703E4 /* ItemListDataProviderTests.swift in Sources */,
 			);
