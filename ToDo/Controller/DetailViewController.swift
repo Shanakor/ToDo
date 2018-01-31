@@ -63,4 +63,13 @@ class DetailViewController: UIViewController {
             descriptionLabel.text = description
         }
     }
+
+
+    // MARK: IBActions
+
+    func checkItem() {
+        if let itemInfo = itemInfo{
+            itemInfo.0.checkItem(at: itemInfo.1)
+        }
+    }
 }
