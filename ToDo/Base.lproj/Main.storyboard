@@ -203,12 +203,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLg-bG-hfg">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Cancel"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3W-Ek-9Cq">
                                         <rect key="frame" x="175" y="0.0" width="160" height="30"/>
                                         <color key="backgroundColor" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Save"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -224,6 +228,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Pdy-9S-oBl"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="ybR-of-AAW" id="ReJ-gh-k8h"/>
+                        <outlet property="cancelButton" destination="QLg-bG-hfg" id="ZZQ-w6-iQ9"/>
+                        <outlet property="dateTextField" destination="2yJ-j0-fgG" id="HyO-Uh-xcm"/>
+                        <outlet property="descriptionTextField" destination="ct5-bQ-3VD" id="Zmv-H4-ZaZ"/>
+                        <outlet property="locationTextField" destination="L8U-dF-hJn" id="ZxB-kU-rlq"/>
+                        <outlet property="saveButton" destination="f3W-Ek-9Cq" id="1Zt-Qm-lGJ"/>
+                        <outlet property="titleTextField" destination="QPT-Z0-iYR" id="oid-y2-7D0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j3Z-3L-6En" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

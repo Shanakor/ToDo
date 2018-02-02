@@ -26,5 +26,32 @@ class InputViewControllerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
+    func test_HasTitleTextField(){
+        XCTAssertTrue(sut.titleTextField.isDescendant(of: sut.view))
+    }
+
+    func test_HasDateTextField(){
+        XCTAssertTrue(sut.dateTextField.isDescendant(of: sut.view))
+    }
+
+    func test_HasLocationTextField(){
+        XCTAssertTrue(sut.locationTextField.isDescendant(of: sut.view))
+    }
+
+    func test_HasAddressTextField(){
+        XCTAssertTrue(sut.addressTextField.isDescendant(of: sut.view))
+    }
+
+    func test_HasDescriptionTextField(){
+        XCTAssertTrue(sut.descriptionTextField.isDescendant(of: sut.view))
+    }
+
+    func test_HasSaveButton(){
+        XCTAssertTrue(sut.saveButton.isDescendant(of: sut.view))
+    }
+
+    func test_HasCancelButton(){
+        XCTAssertTrue(sut.cancelButton.isDescendant(of: sut.view))
+    }
 }
