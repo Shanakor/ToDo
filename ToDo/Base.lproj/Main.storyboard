@@ -300,6 +300,9 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="checkItem" destination="cl2-n5-NJW" eventType="touchUpInside" id="bby-IC-lGz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

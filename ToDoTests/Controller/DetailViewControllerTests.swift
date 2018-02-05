@@ -52,6 +52,16 @@ class DetailViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.checkButton.isDescendant(of: sut.view))
     }
 
+    func test_CheckButtonHasCheckItemAction(){
+        let button = sut.checkButton!
+
+        guard let actions = button.actions(forTarget: sut, forControlEvent: .touchUpInside) else{
+            XCTFail(); return
+        }
+
+        XCTAssertTrue(actions.contains("checkItem"))
+    }
+
     func test_SettingItemInfo_SetsTitleLabelText(){
         setItemInfo(with: ToDoItem(title: "foo"))
 
