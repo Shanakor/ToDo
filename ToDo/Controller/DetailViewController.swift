@@ -45,7 +45,11 @@ class DetailViewController: UIViewController {
 
         let itemManager = itemInfo.0
         let selectedIdx = itemInfo.1
-        let item = itemManager.item(at: selectedIdx)
+
+        guard let item = itemManager.item(at: selectedIdx) else{
+            print("Log: Could not find a TodoItem at index \(selectedIdx)!")
+            return
+        }
 
         titleLabel.text = item.title
 

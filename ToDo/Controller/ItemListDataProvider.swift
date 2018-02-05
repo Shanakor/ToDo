@@ -56,7 +56,7 @@ class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
 
-        let item: ToDoItem
+        let item: ToDoItem?
         switch section{
             case .toDo:
                 item = itemManager.item(at: indexPath.row)
@@ -64,7 +64,12 @@ class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate
                 item = itemManager.doneItem(at: indexPath.row)
         }
 
-        cell.configCell(with: item)
+        if let item = item{
+            cell.configCell(with: item)
+        }
+        else{
+            print("Log: Could not find a TodoItem at index: \(indexPath.row)!")
+        }
 
         return cell
     }

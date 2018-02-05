@@ -23,21 +23,33 @@ class ItemManager {
         }
     }
 
-    func item(at index: Int) -> ToDoItem {
+    func item(at index: Int) -> ToDoItem? {
+        guard toDoItems.count > index else{
+            return nil
+        }
+
         return toDoItems[index]
     }
 
     func checkItem(at index: Int) {
-        let item = toDoItems.remove(at: index)
-        doneItems.append(item)
+        if toDoItems.count > index {
+            let item = toDoItems.remove(at: index)
+            doneItems.append(item)
+        }
     }
 
     func unCheckItem(at index: Int) {
-        let item = doneItems.remove(at: index)
-        toDoItems.append(item)
+        if doneItems.count > index {
+            let item = doneItems.remove(at: index)
+            toDoItems.append(item)
+        }
     }
 
-    func doneItem(at index: Int) -> ToDoItem {
+    func doneItem(at index: Int) -> ToDoItem? {
+        guard doneItems.count > index else{
+            return nil
+        }
+
         return doneItems[index]
     }
 

@@ -47,6 +47,22 @@ class ItemManagerTests: XCTestCase {
         XCTAssertEqual(returnedItem, item)
     }
 
+    func test_ItemAt_ZeroItems_ReturnsNil(){
+        let returnedItem = sut.item(at: 0)
+
+        XCTAssertNil(returnedItem)
+    }
+
+    func test_ItemAt_IndexOutOfRange_ReturnsNil(){
+        sut.add(ToDoItem(title: ""))
+
+        XCTAssertNil(sut.item(at: 1))
+    }
+
+    func test_CheckItemAt_ZeroItems_DoesNotCrash(){
+        sut.checkItem(at: 0)
+    }
+
     func test_CheckItemAt_ChangesCounts(){
         sut.add(ToDoItem(title: ""))
 
@@ -64,6 +80,43 @@ class ItemManagerTests: XCTestCase {
         sut.checkItem(at: 0)
 
         XCTAssertEqual(sut.item(at: 0), item2)
+    }
+
+    func test_UncheckItemAt_ZeroItems_DoesNotCrash(){
+        sut.unCheckItem(at: 0)
+    }
+
+    func test_UnCheckItemAt_ChangesCounts(){
+        sut.add(ToDoItem(title: ""))
+
+        sut.checkItem(at: 0)
+        sut.unCheckItem(at: 0)
+
+        XCTAssertEqual(sut.toDoCount, 1, "should increase todoCount")
+        XCTAssertEqual(sut.doneCount, 0, "should decrease doneCount")
+    }
+
+    func test_UnCheckItemAt_RemovesItemFromDoneItems(){
+        sut.add(ToDoItem(title: "first"))
+        let item2 = ToDoItem(title: "second")
+
+        sut.add(item2)
+        sut.checkItem(at: 0)
+        sut.checkItem(at: 0)
+        sut.unCheckItem(at: 0)
+
+        XCTAssertEqual(sut.doneItem(at: 0), item2)
+    }
+
+    func test_DoneItemAt_ZeroItems_ReturnsNil(){
+        XCTAssertNil(sut.doneItem(at: 0))
+    }
+
+    func test_DoneItemAt_IndexOutOfRange_ReturnsNil(){
+        sut.add(ToDoItem(title: ""))
+        sut.checkItem(at: 0)
+
+        sut.doneItem(at: 1)
     }
 
     func test_DoneItemAt_ReturnsCheckedItem(){
