@@ -92,6 +92,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <customObject id="wiQ-5w-KQL" customClass="ItemListDataProvider" customModule="ToDo" customModuleProvider="target"/>
             </objects>
+            <point key="canvasLocation" x="33" y="34"/>
         </scene>
         <!--Input View Controller-->
         <scene sceneID="f6l-fC-88Y">
@@ -213,6 +214,9 @@
                                         <state key="normal" title="Save">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="save" destination="grx-WI-esc" eventType="touchUpInside" id="VEc-iJ-mGQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

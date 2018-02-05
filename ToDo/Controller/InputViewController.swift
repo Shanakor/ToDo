@@ -36,7 +36,7 @@ class InputViewController: UIViewController {
 
     // MARK: IBActions
 
-    func save(){
+    @IBAction func save(){
         guard let titleString = titleTextField.text,
               !titleString.isEmpty else{
             return

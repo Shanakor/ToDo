@@ -62,6 +62,16 @@ class InputViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.saveButton.isDescendant(of: sut.view))
     }
 
+    func test_SaveButtonHasSaveAction(){
+        let saveButton: UIButton = sut.saveButton
+
+        guard let actions = saveButton.actions(forTarget: sut, forControlEvent: .touchUpInside) else{
+            XCTFail(); return
+        }
+
+        XCTAssertTrue(actions.contains("save"))
+    }
+
     func test_HasCancelButton(){
         XCTAssertTrue(sut.cancelButton.isDescendant(of: sut.view))
     }
