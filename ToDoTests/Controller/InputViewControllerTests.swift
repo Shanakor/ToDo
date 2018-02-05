@@ -16,12 +16,21 @@ class InputViewControllerTests: XCTestCase {
     var sut: InputViewController!
     var placemark: MockPlaceMark!
 
+    lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+
+        return dateFormatter
+    }()
+
     override func setUp() {
         super.setUp()
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         sut = storyboard.instantiateViewController(withIdentifier: "InputViewController") as! InputViewController
         sut.loadViewIfNeeded()
+
+        sut.itemManager = ItemManager()
     }
     
     override func tearDown() {
@@ -57,56 +66,67 @@ class InputViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.cancelButton.isDescendant(of: sut.view))
     }
 
+    func test_Save_NoTitle_DoesNotSave(){
+        sut.save()
+
+        XCTAssertEqual(sut.itemManager!.toDoCount, 0)
+    }
+
     func test_Save_UsesGeocoderToCoordinateFromAddress(){
-        // Variables.
+        // Preparation.
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let item = ToDoItem(title: "foo", itemDescription: "bar", timeStamp: 1456095600.0,
+                            location: Location(name: "baz", coordinate: CLLocationCoordinate2D(latitude: 37.3316851,
+                                    longitude: -122.0300674)))
 
-        let timeStamp = 1456095600.0
-        let date = Date(timeIntervalSince1970: timeStamp)
-
-        sut.titleTextField.text = "foo"
-        sut.dateTextField.text = dateFormatter.string(from: date)
-        sut.locationTextField.text = "bar"
+        sut.titleTextField.text = item.title
+        sut.dateTextField.text = dateFormatter.string(from: Date(timeIntervalSince1970: item.timeStamp!))
+        sut.locationTextField.text = item.location!.name
         sut.addressTextField.text = "Infinite Loop 1, Cubertino"
-        sut.descriptionTextField.text = "baz"
+        sut.descriptionTextField.text = item.itemDescription
 
         let mockGeoCoder = MockGeoCoder()
         sut.geocoder = mockGeoCoder
-
-        sut.itemManager = ItemManager()
 
         // Invocation.
 
         sut.save()
 
-        // Assertion.
-
         placemark = MockPlaceMark()
-        let coordinate = CLLocationCoordinate2D(latitude: 37.3316851,
-                longitude: -122.0300674)
-        placemark.mockCoordinate = coordinate
+        placemark.mockCoordinate = item.location!.coordinate
 
         mockGeoCoder.completionHandler?([placemark], nil)
 
-        let item = sut.itemManager?.item(at: 0)
+        // Assertion.
 
-        let testItem = ToDoItem(title: "foo", itemDescription: "baz", timeStamp: timeStamp, location: Location(name: "bar", coordinate: coordinate))
-
-        XCTAssertEqual(item, testItem)
+        XCTAssertEqual(sut.itemManager!.item(at: 0), item)
     }
 
-//    func test_Save_GivenTitleOnly_SavesItem(){
-//        let item = ToDoItem(title: "foo")
-//        sut.titleTextField.text = item.title
-//        let itemManager = ItemManager()
-//        sut.itemManager = itemManager
-//
-//        sut.save()
-//
-//        XCTAssertEqual(itemManager.item(at: 0), item)
-//    }
+    func test_Save_GivenTitleOnly_SavesItem(){
+        let item = ToDoItem(title: "foo")
+        sut.titleTextField.text = item.title
+
+        sut.save()
+
+        XCTAssertEqual(sut.itemManager!.item(at: 0), item)
+    }
+
+    func test_Save_GivenAllButLocation_SavesItem(){
+        let item = ToDoItem(title: "foo", itemDescription: "bar", timeStamp: 1456095600.0)
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+
+        let date = Date(timeIntervalSince1970: item.timeStamp!)
+
+        sut.titleTextField.text = item.title
+        sut.dateTextField.text = dateFormatter.string(from: date)
+        sut.descriptionTextField.text = item.itemDescription
+
+        sut.save()
+
+        XCTAssertEqual(sut.itemManager!.item(at: 0), item)
+    }
 }
 
 extension InputViewControllerTests{

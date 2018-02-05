@@ -42,22 +42,22 @@ class InputViewController: UIViewController {
             return
         }
 
-        let date: Date?
+        var date: Date? = nil
         if let dateString = dateTextField.text,
            !dateString.isEmpty{
             date = dateFormatter.date(from: dateString)
         }
-        else{
-            date = nil
+
+        var descriptionString: String? = nil
+        if let description = descriptionTextField.text,
+                !description.isEmpty{
+            descriptionString = description
         }
 
-        let descriptionString = descriptionTextField.text
-
         if let locationName = locationTextField.text,
-            !locationName.isEmpty{
-
-            if let address = addressTextField.text,
-                !address.isEmpty{
+            !locationName.isEmpty,
+            let address = addressTextField.text,
+            !address.isEmpty{
 
                 geocoder.geocodeAddressString(address){
                     (placeMarks, error) in
@@ -66,10 +66,12 @@ class InputViewController: UIViewController {
 
                     let item = ToDoItem(title: titleString, itemDescription: descriptionString, timeStamp: date?.timeIntervalSince1970,
                             location: Location(name: locationName, coordinate: placemark?.location?.coordinate))
-
                     self.itemManager?.add(item)
                 }
-            }
+        }
+        else{
+            let item = ToDoItem(title: titleString, itemDescription: descriptionString, timeStamp: date?.timeIntervalSince1970)
+            self.itemManager?.add(item)
         }
     }
 }
