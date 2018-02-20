@@ -18,12 +18,15 @@
 		19506D562021DC83009A43AB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19506D552021DC83009A43AB /* MapKit.framework */; };
 		19506D5820221A39009A43AB /* InputViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19506D5720221A39009A43AB /* InputViewControllerTests.swift */; };
 		19506D5A20221A7C009A43AB /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19506D5920221A7C009A43AB /* InputViewController.swift */; };
+		19A077FB2029B1D800DC8FED /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A077FA2029B1D800DC8FED /* APIClientTests.swift */; };
 		3C9DE0B5FAA8CFE6D2A703E4 /* ItemListDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DECCA237A9E0D25513530 /* ItemListDataProviderTests.swift */; };
 		3C9DE0BEC01C7638F0FD5860 /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DE343875DFE8DA2384E3B /* LocationTests.swift */; };
 		3C9DE200C7583EFD546316CE /* ItemManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DEFBD5FDC4FDF3B48FAA3 /* ItemManagerTests.swift */; };
 		3C9DE3D99843AC2FA820C3E9 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DEB7E74E61B769CB7CEA4 /* ItemListViewController.swift */; };
 		3C9DE46A45F2987155FF68C9 /* ItemListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DE1F28478BB21C1CFE5F8 /* ItemListDataProvider.swift */; };
+		3C9DE5BC0DE2ADE208366999 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DE9876A31E1D5D26EE6F9 /* Token.swift */; };
 		3C9DE7B3E82D6FD93DF32055 /* ToDoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DE47BF399E545423B54E5 /* ToDoItemTests.swift */; };
+		3C9DE88FAC5AE0619FF3B56D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DEB764C2875FD54D1C51C /* APIClient.swift */; };
 		3C9DE8EB07823C071E3AEF73 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DE46B3FB206574263E48E /* Location.swift */; };
 		3C9DECE81B65777B8F0F95E1 /* ItemListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DEF9AE6BE873FEC69512D /* ItemListViewControllerTests.swift */; };
 		3C9DEDE3D14FAE90087E4C7A /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DE8C2FB11C0B5FD95F509 /* ToDoItem.swift */; };
@@ -56,12 +59,15 @@
 		19506D552021DC83009A43AB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		19506D5720221A39009A43AB /* InputViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewControllerTests.swift; sourceTree = "<group>"; };
 		19506D5920221A7C009A43AB /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
+		19A077FA2029B1D800DC8FED /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 		3C9DE1F28478BB21C1CFE5F8 /* ItemListDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListDataProvider.swift; sourceTree = "<group>"; };
 		3C9DE343875DFE8DA2384E3B /* LocationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
 		3C9DE3537889D0D722D6FFA4 /* ItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
 		3C9DE46B3FB206574263E48E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		3C9DE47BF399E545423B54E5 /* ToDoItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItemTests.swift; sourceTree = "<group>"; };
 		3C9DE8C2FB11C0B5FD95F509 /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		3C9DE9876A31E1D5D26EE6F9 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		3C9DEB764C2875FD54D1C51C /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		3C9DEB7E74E61B769CB7CEA4 /* ItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		3C9DECCA237A9E0D25513530 /* ItemListDataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListDataProviderTests.swift; sourceTree = "<group>"; };
 		3C9DEF9AE6BE873FEC69512D /* ItemListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListViewControllerTests.swift; sourceTree = "<group>"; };
@@ -117,6 +123,8 @@
 				3C9DE8EB516F188167408B65 /* Model */,
 				19506D4C2020B3C9009A43AB /* ItemCell.swift */,
 				3C9DEF292D09288092C9BCE0 /* Controller */,
+				3C9DEB764C2875FD54D1C51C /* APIClient.swift */,
+				3C9DE9876A31E1D5D26EE6F9 /* Token.swift */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -128,6 +136,7 @@
 				3C9DE6E7F98E3E9602E74A67 /* Model */,
 				3C9DE511A686C5080335C35F /* Controller */,
 				19506D4E202100F5009A43AB /* ItemCellTests.swift */,
+				19A077FA2029B1D800DC8FED /* APIClientTests.swift */,
 			);
 			path = ToDoTests;
 			sourceTree = "<group>";
@@ -300,6 +309,8 @@
 				3C9DE46A45F2987155FF68C9 /* ItemListDataProvider.swift in Sources */,
 				3C9DE3D99843AC2FA820C3E9 /* ItemListViewController.swift in Sources */,
 				19506D532021152A009A43AB /* DetailViewController.swift in Sources */,
+				3C9DE88FAC5AE0619FF3B56D /* APIClient.swift in Sources */,
+				3C9DE5BC0DE2ADE208366999 /* Token.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +324,7 @@
 				19506D5820221A39009A43AB /* InputViewControllerTests.swift in Sources */,
 				3C9DE7B3E82D6FD93DF32055 /* ToDoItemTests.swift in Sources */,
 				19506D51202114AA009A43AB /* DetailViewControllerTests.swift in Sources */,
+				19A077FB2029B1D800DC8FED /* APIClientTests.swift in Sources */,
 				3C9DECE81B65777B8F0F95E1 /* ItemListViewControllerTests.swift in Sources */,
 				3C9DE0B5FAA8CFE6D2A703E4 /* ItemListDataProviderTests.swift in Sources */,
 			);

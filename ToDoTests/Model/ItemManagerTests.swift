@@ -116,7 +116,7 @@ class ItemManagerTests: XCTestCase {
         sut.add(ToDoItem(title: ""))
         sut.checkItem(at: 0)
 
-        sut.doneItem(at: 1)
+        XCTAssertNil(sut.doneItem(at: 1))
     }
 
     func test_DoneItemAt_ReturnsCheckedItem(){
