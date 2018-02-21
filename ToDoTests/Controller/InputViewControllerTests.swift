@@ -156,23 +156,29 @@ class InputViewControllerTests: XCTestCase {
 
     func test_Save_UsesGeocoderToCoordinateFromAddress(){
         // Preparation.
+        let mockSut = initMockInputVC()
 
         let item = ToDoItem(title: "foo", itemDescription: "bar", timeStamp: 1456095600.0,
                             location: Location(name: "baz", coordinate: CLLocationCoordinate2D(latitude: 37.3316851,
                                     longitude: -122.0300674)))
 
-        sut.titleTextField.text = item.title
-        sut.dateTextField.text = dateFormatter.string(from: Date(timeIntervalSince1970: item.timeStamp!))
-        sut.locationTextField.text = item.location!.name
-        sut.addressTextField.text = "Infinite Loop 1, Cubertino"
-        sut.descriptionTextField.text = item.itemDescription
+        mockSut.titleTextField.text = item.title
+        mockSut.dateTextField.text = dateFormatter.string(from: Date(timeIntervalSince1970: item.timeStamp!))
+        mockSut.locationTextField.text = item.location!.name
+        mockSut.addressTextField.text = "Infinite Loop 1, Cubertino"
+        mockSut.descriptionTextField.text = item.itemDescription
 
         let mockGeoCoder = MockGeoCoder()
-        sut.geocoder = mockGeoCoder
+        mockSut.geocoder = mockGeoCoder
+
+        mockSut.itemManager = ItemManager()
 
         // Invocation.
 
-        sut.save()
+        let dismissExpectation = expectation(description: "Dismiss")
+
+        mockSut.dismissCompletionHandler = { dismissExpectation.fulfill() }
+        mockSut.save()
 
         placemark = MockPlaceMark()
         placemark.mockCoordinate = item.location!.coordinate
@@ -181,7 +187,11 @@ class InputViewControllerTests: XCTestCase {
 
         // Assertion.
 
-        XCTAssertEqual(sut.itemManager!.item(at: 0), item)
+        waitForExpectations(timeout: 1)
+
+        XCTAssertEqual(mockSut.itemManager!.item(at: 0), item)
+
+        mockSut.itemManager?.removeAll()
     }
 
     func test_Save_GivenTitleOnly_SavesItem(){
@@ -242,9 +252,11 @@ extension InputViewControllerTests{
 
     class MockInputViewController: InputViewController{
         private(set) var dismissGotCalled = false
+        fileprivate var dismissCompletionHandler: (() -> Void)?
 
         override func dismiss(animated flag: Bool, completion: (() -> Void)?) {
             dismissGotCalled = true
+            dismissCompletionHandler?()
         }
     }
 }

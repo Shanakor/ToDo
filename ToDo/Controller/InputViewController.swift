@@ -66,15 +66,18 @@ class InputViewController: UIViewController {
 
                     let item = ToDoItem(title: titleString, itemDescription: descriptionString, timeStamp: date?.timeIntervalSince1970,
                             location: Location(name: locationName, coordinate: placemark?.location?.coordinate))
-                    self.itemManager?.add(item)
+
+                    DispatchQueue.main.async {
+                        self.itemManager?.add(item)
+                        self.dismiss(animated: true)
+                    }
                 }
         }
         else{
             let item = ToDoItem(title: titleString, itemDescription: descriptionString, timeStamp: date?.timeIntervalSince1970)
-            self.itemManager?.add(item)
+            itemManager?.add(item)
+            dismiss(animated: true)
         }
-
-        dismiss(animated: true)
     }
 
     @IBAction func configureSaveButtonAccessibility() {
