@@ -5,7 +5,7 @@
 
 import Foundation
 
-class ItemManager {
+class ItemManager: NSObject {
 
     // MARK: Properties
 

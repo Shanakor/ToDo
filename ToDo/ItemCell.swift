@@ -40,9 +40,15 @@ class ItemCell: UITableViewCell {
             let date = Date(timeIntervalSince1970: timeStamp)
             dateLabel.text = dateFormatter.string(from: date)
         }
+        else{
+            dateLabel.text = nil
+        }
 
         if let location = item.location{
             locationLabel.text = location.name
+        }
+        else{
+            locationLabel.text = nil
         }
     }
 

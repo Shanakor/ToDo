@@ -73,5 +73,15 @@ class InputViewController: UIViewController {
             let item = ToDoItem(title: titleString, itemDescription: descriptionString, timeStamp: date?.timeIntervalSince1970)
             self.itemManager?.add(item)
         }
+
+        dismiss(animated: true)
+    }
+
+    @IBAction func configureSaveButtonAccessibility() {
+        saveButton.isEnabled = !titleTextField.text!.isEmpty
+    }
+    
+    @IBAction func dismissViewController() {
+        dismiss(animated: true)
     }
 }

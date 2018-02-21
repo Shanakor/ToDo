@@ -62,7 +62,7 @@ class InputViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.saveButton.isDescendant(of: sut.view))
     }
 
-    func test_SaveButtonHasSaveAction(){
+    func test_SaveButton_HasSaveAction(){
         let saveButton: UIButton = sut.saveButton
 
         guard let actions = saveButton.actions(forTarget: sut, forControlEvent: .touchUpInside) else{
@@ -72,8 +72,79 @@ class InputViewControllerTests: XCTestCase {
         XCTAssertTrue(actions.contains("save"))
     }
 
+    func test_SaveButton_Initially_IsDisabled(){
+        guard let saveButton = sut.saveButton else{
+            XCTFail(); return
+        }
+
+        XCTAssertFalse(saveButton.isEnabled)
+    }
+
     func test_HasCancelButton(){
         XCTAssertTrue(sut.cancelButton.isDescendant(of: sut.view))
+    }
+
+    func test_CancelButton_HasDismissAction(){
+        let cancelButton: UIButton = sut.cancelButton
+
+        guard let actions = cancelButton.actions(forTarget: sut, forControlEvent: .touchUpInside) else{
+            XCTFail(); return
+        }
+
+        XCTAssertTrue(actions.contains("dismissViewController"))
+    }
+
+    func test_DismissVC_DismissesVC(){
+        let mockInputVC = initMockInputVC()
+
+        mockInputVC.dismissViewController()
+
+        XCTAssertTrue(mockInputVC.dismissGotCalled)
+    }
+
+    private func initMockInputVC() -> MockInputViewController {
+        let mockInputVC = MockInputViewController()
+        mockInputVC.titleTextField = UITextField()
+        mockInputVC.dateTextField = UITextField()
+        mockInputVC.locationTextField = UITextField()
+        mockInputVC.addressTextField = UITextField()
+        mockInputVC.descriptionTextField = UITextField()
+        mockInputVC.titleTextField.text = "foo bar"
+        return mockInputVC
+    }
+
+    func test_TitleLabel_HasConfigureAccessibilityAction(){
+        let titleTextField: UITextField = sut.titleTextField
+
+        guard let actions = titleTextField.actions(forTarget: sut, forControlEvent: .editingChanged) else{
+            XCTFail(); return
+        }
+
+        actions.contains("configureSaveButtonAccessibility")
+    }
+
+    func test_ConfigureSaveButtonAccessibility_TitleTextFieldHasText_SaveButtonIsEnabled(){
+        sut.titleTextField.text = "foo"
+
+        sut.configureSaveButtonAccessibility()
+
+        XCTAssertTrue(sut.saveButton.isEnabled)
+    }
+
+    func test_ConfigureSaveButtonAccessibility_TitleTextFieldHasNoText_SaveButtonIsDisabled(){
+        sut.titleTextField.text = ""
+
+        sut.configureSaveButtonAccessibility()
+
+        XCTAssertFalse(sut.saveButton.isEnabled)
+    }
+
+    func test_ConfigureSaveButtonAccessibility_TitleTextFieldTextIsNil_SaveButtonIsDisabled(){
+        sut.titleTextField.text = nil
+
+        sut.configureSaveButtonAccessibility()
+
+        XCTAssertFalse(sut.saveButton.isEnabled)
     }
 
     func test_Save_NoTitle_DoesNotSave(){
@@ -138,6 +209,14 @@ class InputViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.itemManager!.item(at: 0), item)
     }
 
+    func test_Save_DismissesViewController(){
+        let mockInputVC = initMockInputVC()
+
+        mockInputVC.save()
+
+        XCTAssertTrue(mockInputVC.dismissGotCalled)
+    }
+
     func test_Geocoder_FetchesCoordinates(){
         let address = "Infinite Loop 1, Cubertino"
         let geocoderAnswered = expectation(description: "Geocoder")
@@ -183,6 +262,14 @@ extension InputViewControllerTests{
             }
 
             return CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        }
+    }
+
+    class MockInputViewController: InputViewController{
+        private(set) var dismissGotCalled = false
+
+        override func dismiss(animated flag: Bool, completion: (() -> Void)?) {
+            dismissGotCalled = true
         }
     }
 }
