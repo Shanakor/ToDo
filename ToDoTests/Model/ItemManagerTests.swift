@@ -169,4 +169,25 @@ class ItemManagerTests: XCTestCase {
         XCTAssertEqual(itemManager!.item(at: 0), item1)
         XCTAssertEqual(itemManager!.item(at: 1), item2)
     }
+
+    func test_ApplicationWillResignActive_DoneItemsGetSerialized(){
+        var itemManager: ItemManager? = ItemManager()
+        let item1 = ToDoItem(title: "first")
+        let item2 = ToDoItem(title: "second")
+        itemManager!.add(item1)
+        itemManager!.add(item2)
+
+        itemManager!.checkItem(at: 0)
+        itemManager!.checkItem(at: 0)
+
+        NotificationCenter.default.post(name: .UIApplicationWillResignActive, object: nil)
+        itemManager = nil
+
+        XCTAssertNil(itemManager)
+
+        itemManager = ItemManager()
+        XCTAssertEqual(itemManager!.doneCount, 2)
+        XCTAssertEqual(itemManager!.doneItem(at: 0), item1)
+        XCTAssertEqual(itemManager!.doneItem(at: 1), item2)
+    }
 }

@@ -15,7 +15,7 @@ class ItemManager: NSObject {
     var toDoCount: Int { return toDoItems.count}
     var doneCount: Int { return doneItems.count}
 
-    private var toDoPathURL: URL{
+    private var basePathURL: URL{
         let fileURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 
         guard let documentURL = fileURLs.first else{
@@ -23,7 +23,15 @@ class ItemManager: NSObject {
             fatalError()
         }
 
-        return documentURL.appendingPathComponent("toDoItems.plist")
+        return documentURL
+    }
+
+    private var toDoItemPathURL: URL{
+        return basePathURL.appendingPathComponent("toDoItems.plist")
+    }
+
+    private var doneItemPathURL: URL{
+        return basePathURL.appendingPathComponent("doneItems.plist")
     }
 
     // MARK: Initialization
@@ -33,7 +41,7 @@ class ItemManager: NSObject {
 
         NotificationCenter.default.addObserver(self, selector: #selector(persist), name: .UIApplicationWillResignActive, object: nil)
 
-        restoreToDoItems()
+        restoreItems()
     }
 
     deinit{
@@ -87,27 +95,55 @@ class ItemManager: NSObject {
     // MARK: Persistence
 
     @objc private func persist(){
-        let nsToDoItems = toDoItems.map { $0.plistDict }
+        persistToDoItems()
+        persistDoneItems()
+    }
 
-        guard nsToDoItems.count > 0 else{
-            try? FileManager.default.removeItem(at: toDoPathURL)
+    private func persistDoneItems() {
+        let nsDoneItems = doneItems.map { $0.plistDict }
+        persistItems(nsDoneItems, at: doneItemPathURL)
+    }
+
+    private func persistToDoItems() {
+        let nsToDoItems = toDoItems.map { $0.plistDict }
+        persistItems(nsToDoItems, at: toDoItemPathURL)
+    }
+
+    private func persistItems(_ items: [[String: Any]], at url: URL) {
+        guard items.count > 0 else{
+            try? FileManager.default.removeItem(at: url)
             return
         }
 
         do{
-            let plistData = try PropertyListSerialization.data(fromPropertyList: nsToDoItems, format: .xml, options: PropertyListSerialization.WriteOptions(0))
-            try plistData.write(to: toDoPathURL, options: .atomic)
+            let plistData = try PropertyListSerialization.data(fromPropertyList: items, format: .xml, options: PropertyListSerialization.WriteOptions(0))
+            try plistData.write(to: url, options: .atomic)
         }
         catch{
             print(error)
         }
     }
 
-    private func restoreToDoItems(){
-        if let nsToDoItems = NSArray(contentsOf: toDoPathURL) {
+    private func restoreItems(){
+        restoreToDoItems()
+        restoreDoneItems()
+    }
+
+    private func restoreToDoItems() {
+        if let nsToDoItems = NSArray(contentsOf: toDoItemPathURL) {
             for dict in nsToDoItems {
                 if let toDoItem = ToDoItem(dict: dict as! [String: Any]){
                     toDoItems.append(toDoItem)
+                }
+            }
+        }
+    }
+
+    private func restoreDoneItems() {
+        if let nsDoneItems = NSArray(contentsOf: doneItemPathURL) {
+            for dict in nsDoneItems {
+                if let doneItem = ToDoItem(dict: dict as! [String: Any]){
+                    doneItems.append(doneItem)
                 }
             }
         }
