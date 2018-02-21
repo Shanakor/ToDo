@@ -94,4 +94,22 @@ class ToDoItemTests: XCTestCase {
 
         XCTAssertNotEqual(first, second)
     }
+
+    func test_HasPlistDictionaryProperty(){
+        let item = ToDoItem(title: "foo")
+
+        let dict = item.plistDict
+
+        XCTAssertNotNil(dict)
+    }
+
+    func test_CanBeRecreatedFromPlistDictionary(){
+        let location = Location(name: "baz")
+        let item = ToDoItem(title: "foo", itemDescription: "bar", timeStamp: 1.0, location: location)
+
+        let dict = item.plistDict
+        let recreatedItem = ToDoItem(dict: dict)
+
+        XCTAssertEqual(recreatedItem, item)
+    }
 }

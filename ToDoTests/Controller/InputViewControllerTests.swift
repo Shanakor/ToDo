@@ -120,7 +120,7 @@ class InputViewControllerTests: XCTestCase {
             XCTFail(); return
         }
 
-        actions.contains("configureSaveButtonAccessibility")
+        XCTAssertTrue(actions.contains("configureSaveButtonAccessibility"))
     }
 
     func test_ConfigureSaveButtonAccessibility_TitleTextFieldHasText_SaveButtonIsEnabled(){
