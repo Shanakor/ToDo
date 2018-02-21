@@ -15,6 +15,32 @@ class ItemManager: NSObject {
     var toDoCount: Int { return toDoItems.count}
     var doneCount: Int { return doneItems.count}
 
+    private var toDoPathURL: URL{
+        let fileURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+
+        guard let documentURL = fileURLs.first else{
+            print("Something went wrong. Documents url could not be found.")
+            fatalError()
+        }
+
+        return documentURL.appendingPathComponent("toDoItems.plist")
+    }
+
+    // MARK: Initialization
+
+    override init(){
+        super.init()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(persist), name: .UIApplicationWillResignActive, object: nil)
+
+        restoreToDoItems()
+    }
+
+    deinit{
+        NotificationCenter.default.removeObserver(self)
+        persist()
+    }
+
     // MARK: Utility Methods
 
     func add(_ item: ToDoItem) {
@@ -56,5 +82,34 @@ class ItemManager: NSObject {
     func removeAll() {
         toDoItems.removeAll()
         doneItems.removeAll()
+    }
+
+    // MARK: Persistence
+
+    @objc private func persist(){
+        let nsToDoItems = toDoItems.map { $0.plistDict }
+
+        guard nsToDoItems.count > 0 else{
+            try? FileManager.default.removeItem(at: toDoPathURL)
+            return
+        }
+
+        do{
+            let plistData = try PropertyListSerialization.data(fromPropertyList: nsToDoItems, format: .xml, options: PropertyListSerialization.WriteOptions(0))
+            try plistData.write(to: toDoPathURL, options: .atomic)
+        }
+        catch{
+            print(error)
+        }
+    }
+
+    private func restoreToDoItems(){
+        if let nsToDoItems = NSArray(contentsOf: toDoPathURL) {
+            for dict in nsToDoItems {
+                if let toDoItem = ToDoItem(dict: dict as! [String: Any]){
+                    toDoItems.append(toDoItem)
+                }
+            }
+        }
     }
 }
